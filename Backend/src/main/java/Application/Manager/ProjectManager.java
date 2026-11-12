@@ -35,6 +35,7 @@ public class ProjectManager implements IProjectManager
   private List<Project> applyFilters(List<Project> projects, Optional<String> projectNameFilter)
   {
     List<Project> filteredProjects = projects;
+    
     if(projectNameFilter.isPresent())
     {
       filteredProjects = projects.stream().filter(project -> project.getProjectName().toLowerCase()
