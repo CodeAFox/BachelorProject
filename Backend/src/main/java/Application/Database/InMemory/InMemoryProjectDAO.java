@@ -5,6 +5,7 @@ import Application.Entities.Base.Project;
 import Application.Exception.NullSavedToDatabaseException;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class InMemoryProjectDAO implements IProjectDAO
 {
@@ -17,5 +18,15 @@ public class InMemoryProjectDAO implements IProjectDAO
       throw new NullSavedToDatabaseException("Project");
     }
     projects.add(project);
+  }
+
+  public Project getProject(int id)
+  {
+    return new Project(projects.get(id));
+  }
+
+  public List<Project> getAllProjects()
+  {
+    return new ArrayList<>(projects);
   }
 }
