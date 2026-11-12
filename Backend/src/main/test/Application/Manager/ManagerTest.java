@@ -22,4 +22,22 @@ public class ManagerTest
     Assertions.assertDoesNotThrow(() ->
         manager.getProjectManager().addProject(testProject));
   }
+
+  @Test
+  public void getProjectMethodCanBeCalled()
+  {
+    // Arrange
+    manager.getProjectManager().addProject(testProject);
+
+    // Assert
+    Assertions.assertDoesNotThrow(() ->
+        manager.getProjectManager().getProject(0));
+  }
+
+  @Test
+  public void getAllProjectsMethodCanBeCalled()
+  {
+    Assertions.assertDoesNotThrow(()->
+        manager.getProjectManager().getAllProjects());
+  }
 }

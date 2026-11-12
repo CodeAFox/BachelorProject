@@ -4,9 +4,12 @@ import Application.Database.DatabaseManager;
 import Application.Entities.Base.Project;
 import Application.Exception.NullSavedToDatabaseException;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ProjectManager implements IProjectManager
 {
-  private DatabaseManager dbs;
+  private final DatabaseManager dbs;
 
   public ProjectManager()
   {
@@ -15,5 +18,15 @@ public class ProjectManager implements IProjectManager
   public void addProject(Project project) throws NullSavedToDatabaseException
   {
     dbs.getProjectDAO().addProject(project);
+  }
+
+  public Project getProject(int id)
+  {
+    return dbs.getProjectDAO().getProject(id);
+  }
+
+  public List<Project> getAllProjects()
+  {
+    return dbs.getProjectDAO().getAllProjects();
   }
 }
