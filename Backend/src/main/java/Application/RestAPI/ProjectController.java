@@ -5,10 +5,9 @@ import Application.Exception.NullSavedToDatabaseException;
 import Application.Manager.Manager;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class ProjectController
@@ -23,5 +22,17 @@ public class ProjectController
   public void addProject(@RequestBody Project project)
   {
     manager.getProjectManager().addProject(project);
+  }
+
+  @GetMapping("/projects/{id}")
+  public Project getProject(@PathVariable int id)
+  {
+    return manager.getProjectManager().getProject(id);
+  }
+
+  @GetMapping("/projects")
+  public List<Project> getAllProjects()
+  {
+    return manager.getProjectManager().getAllProjects();
   }
 }
