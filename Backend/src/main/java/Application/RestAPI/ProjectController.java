@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class ProjectController
@@ -31,8 +32,10 @@ public class ProjectController
   }
 
   @GetMapping("/projects")
-  public List<Project> getAllProjects()
+  public List<Project> getAllProjects(
+      @PathVariable(required = false) String projectNameFilter
+  )
   {
-    return manager.getProjectManager().getAllProjects();
+    return manager.getProjectManager().getAllProjects(Optional.ofNullable(projectNameFilter));
   }
 }

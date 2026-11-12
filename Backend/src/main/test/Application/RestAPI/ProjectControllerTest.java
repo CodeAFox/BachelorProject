@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Optional;
+
 public class ProjectControllerTest
 {
   private ProjectController projectController;
@@ -38,6 +40,6 @@ public class ProjectControllerTest
   public void ManagerGetAllProjects()
   {
     Assertions.assertDoesNotThrow(()->
-        projectController.getAllProjects());
+        projectController.getAllProjects(null));
   }
 }
