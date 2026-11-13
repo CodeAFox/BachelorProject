@@ -32,6 +32,11 @@ public class ProjectManager implements IProjectManager
         projectNameFilter);
   }
 
+  public void deleteProject(int id)
+  {
+    dbs.getProjectDAO().deleteProject(id);
+  }
+
   private List<Project> applyFilters(List<Project> projects, Optional<String> projectNameFilter)
   {
     List<Project> filteredProjects = projects;

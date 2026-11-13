@@ -12,4 +12,5 @@ public interface IProjectManager
   void addProject(Project project) throws NullSavedToDatabaseException;
   Project getProject(int id);
   List<Project> getAllProjects(Optional<String> projectNameFilter);
+  void deleteProject(int id);
 }

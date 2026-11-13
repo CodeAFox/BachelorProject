@@ -83,4 +83,15 @@ public class ManagerTest
     Assertions.assertEquals(1, manager.getProjectManager().getAllProjects(Optional.of("holidays")).size());
     Assertions.assertEquals(3, manager.getProjectManager().getAllProjects(Optional.of("S")).size());
   }
+
+  @Test
+  public void deleteProjectCanBeCalled()
+  {
+    // Arrange
+    manager.getProjectManager().addProject(testProject);
+
+    Assertions.assertDoesNotThrow(()->
+        manager.getProjectManager().deleteProject(0));
+  }
+
 }
