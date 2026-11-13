@@ -34,4 +34,11 @@ public class InMemoryProjectDAO implements IProjectDAO
   {
     projects.remove(id);
   }
+
+  public Project editProject(int id, Project edited)
+  {
+    projects.set(id, edited);
+
+    return projects.get(id);
+  }
 }

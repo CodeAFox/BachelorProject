@@ -116,4 +116,26 @@ public class DatabaseManagerTest
     // Assert
     Assertions.assertEquals(2, dbs.getProjectDAO().getAllProjects().size());
   }
+
+  @Test
+  public void cannotEditNonexistentProject()
+  {
+    Assertions.assertThrows(IndexOutOfBoundsException.class, ()->
+        dbs.getProjectDAO().editProject(-1, testProject));
+  }
+
+  @Test
+  public void editingProjectEditsIt()
+  {
+    // Arrange
+    dbs.getProjectDAO().addProject(testProject);
+    Assertions.assertEquals(testProject, dbs.getProjectDAO().getProject(0));
+
+    // Act
+    dbs.getProjectDAO().editProject(0, new Project("test2", "under test"));
+
+    // Assert
+    Assertions.assertNotEquals(testProject, dbs.getProjectDAO().getProject(0));
+    Assertions.assertEquals(new Project("test2", "under test"), dbs.getProjectDAO().getProject(0));
+  }
 }

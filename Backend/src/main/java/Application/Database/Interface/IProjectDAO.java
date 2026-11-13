@@ -11,4 +11,5 @@ public interface IProjectDAO
   Project getProject(int id);
   List<Project> getAllProjects();
   void deleteProject(int id);
+  Project editProject(int id, Project edited);
 }
