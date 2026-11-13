@@ -29,4 +29,9 @@ public class InMemoryProjectDAO implements IProjectDAO
   {
     return new ArrayList<>(projects);
   }
+
+  public void deleteProject(int id)
+  {
+    projects.remove(id);
+  }
 }

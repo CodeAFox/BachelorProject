@@ -79,4 +79,41 @@ public class DatabaseManagerTest
     // Assert
     Assertions.assertEquals(1, dbs.getProjectDAO().getAllProjects().size());
   }
+
+  @Test
+  public void cannotDeleteNonExistentProject()
+  {
+    Assertions.assertThrows(IndexOutOfBoundsException.class, ()->
+        dbs.getProjectDAO().deleteProject(-1));
+  }
+
+  @Test
+  public void deleteAddedProject()
+  {
+    // Arrange
+    dbs.getProjectDAO().addProject(testProject);
+    Assertions.assertEquals(1, dbs.getProjectDAO().getAllProjects().size());
+
+    // Act
+    dbs.getProjectDAO().deleteProject(0);
+
+    // Assert
+    Assertions.assertEquals(0, dbs.getProjectDAO().getAllProjects().size());
+  }
+
+  @Test
+  public void canDeleteFromMultipleProjects()
+  {
+    // Arrange
+    dbs.getProjectDAO().addProject(testProject);
+    dbs.getProjectDAO().addProject(testProject);
+    dbs.getProjectDAO().addProject(testProject);
+    Assertions.assertEquals(3, dbs.getProjectDAO().getAllProjects().size());
+
+    // Act
+    dbs.getProjectDAO().deleteProject(1);
+
+    // Assert
+    Assertions.assertEquals(2, dbs.getProjectDAO().getAllProjects().size());
+  }
 }
