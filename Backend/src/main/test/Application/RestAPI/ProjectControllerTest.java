@@ -37,9 +37,27 @@ public class ProjectControllerTest
   }
 
   @Test
-  public void ManagerGetAllProjects()
+  public void ManagerGetAllProjectsCanBeCalledWithoutFilter()
   {
     Assertions.assertDoesNotThrow(()->
         projectController.getAllProjects(null));
+  }
+
+  @Test
+  public void managerGetProjectsCanBeCalledWithFilter()
+  {
+    Assertions.assertDoesNotThrow(()->
+        projectController.getAllProjects("test"));
+  }
+
+  @Test
+  public void managerDeleteProjectCanBeCalled()
+  {
+    // Arrange
+    projectController.addProject(testProject);
+
+    // Assertions
+    Assertions.assertDoesNotThrow(()->
+        projectController.deleteProject(0));
   }
 }

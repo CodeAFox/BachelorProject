@@ -38,4 +38,10 @@ public class ProjectController
   {
     return manager.getProjectManager().getAllProjects(Optional.ofNullable(projectNameFilter));
   }
+
+  @DeleteMapping("/projects/{id}")
+  public void deleteProject(@PathVariable int id)
+  {
+    manager.getProjectManager().deleteProject(id);
+  }
 }
