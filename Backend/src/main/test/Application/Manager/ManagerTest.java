@@ -94,4 +94,14 @@ public class ManagerTest
         manager.getProjectManager().deleteProject(0));
   }
 
+  @Test
+  public void editProjectCanBeCalled()
+  {
+    // Arrange
+    manager.getProjectManager().addProject(testProject);
+
+    // Assert
+    Assertions.assertDoesNotThrow(()->
+        manager.getProjectManager().editProject(0, new Project("test", "under test")));
+  }
 }

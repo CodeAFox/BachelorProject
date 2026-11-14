@@ -13,4 +13,5 @@ public interface IProjectManager
   Project getProject(int id);
   List<Project> getAllProjects(Optional<String> projectNameFilter);
   void deleteProject(int id);
+  Project editProject(int id, Project edited);
 }

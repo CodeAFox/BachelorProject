@@ -37,6 +37,11 @@ public class ProjectManager implements IProjectManager
     dbs.getProjectDAO().deleteProject(id);
   }
 
+  public Project editProject(int id, Project edited)
+  {
+    return dbs.getProjectDAO().editProject(id, edited);
+  }
+
   private List<Project> applyFilters(List<Project> projects, Optional<String> projectNameFilter)
   {
     List<Project> filteredProjects = projects;
