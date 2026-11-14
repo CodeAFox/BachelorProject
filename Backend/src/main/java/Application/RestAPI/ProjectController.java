@@ -44,4 +44,10 @@ public class ProjectController
   {
     manager.getProjectManager().deleteProject(id);
   }
+
+  @PutMapping("/projects/{id}")
+  public Project editProject(@PathVariable int id, @RequestBody Project edited)
+  {
+    return manager.getProjectManager().editProject(id, edited);
+  }
 }

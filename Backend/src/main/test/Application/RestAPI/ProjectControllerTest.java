@@ -60,4 +60,15 @@ public class ProjectControllerTest
     Assertions.assertDoesNotThrow(()->
         projectController.deleteProject(0));
   }
+
+  @Test
+  public void managerEditProjectCanBeCalled()
+  {
+    // Arrange
+    projectController.addProject(testProject);
+
+    //Assert
+    Assertions.assertDoesNotThrow(()->
+        projectController.editProject(0, new Project("test", "under test")));
+  }
 }
