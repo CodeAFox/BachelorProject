@@ -8,13 +8,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * The class responsible for the {@link Project} related methods
+ */
 public class ProjectManager implements IProjectManager
 {
   private final DatabaseManager dbs;
 
-  public ProjectManager()
+  public ProjectManager(DatabaseManager dbs)
   {
-    dbs = new DatabaseManager();
+    this.dbs = dbs;
   }
   public void addProject(Project project) throws NullSavedToDatabaseException
   {
