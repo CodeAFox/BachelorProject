@@ -5,6 +5,9 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * Entity for containing projects.
+ */
 @Getter
 @Setter
 @AllArgsConstructor
